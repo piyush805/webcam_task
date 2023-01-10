@@ -6,7 +6,7 @@ import photoRoutes from "./routes/photo.js"
 import cors from "cors";
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
-
+import FileUpload from "express-fileupload"
 dotenv.config();
 
 mongoose.set('strictQuery', true); //terminal warning removal 
@@ -19,6 +19,7 @@ const connect = () => {
     })
 }
 //middleware
+app.use(FileUpload())
 app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser())
 app.use(express.json());
